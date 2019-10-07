@@ -42,14 +42,16 @@ public class TestObjectTable {
 		PageTable pagetable = new PageTable(driver);
 		pagetable.CheckProductsPrices();
 		//Verif filtre default
+		Thread.sleep(3000);
 		pagetable.ClickFiltreDefault();
 		pagetable.CheckProductsPricesDefault();
 		//Verif filtre Asian Wood
+		Thread.sleep(3000);
 		pagetable.ClickFiltreAsianWood();
 		//Verif filtre default
+		Thread.sleep(3000);
 		pagetable.ClickFiltreRoots();
 		
-		driver.close();
 }
 }
 
