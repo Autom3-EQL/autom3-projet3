@@ -52,7 +52,6 @@ public class TestObjectTable {
 		Thread.sleep(3000);
 		pagetable.ClickFiltreRoots();
 		
-		
 }
 }
 
