@@ -41,7 +41,8 @@ public class TestObjectTable {
 		//Verif des 4 éléments
 		PageTable pagetable = new PageTable(driver);
 		pagetable.CheckProductsPrices();
-	
+		
+		driver.close();	
 		
 	
 		
