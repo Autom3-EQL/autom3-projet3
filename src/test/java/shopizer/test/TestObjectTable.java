@@ -47,6 +47,7 @@ public class TestObjectTable {
 		pagetable.CheckProductsPricesDefault();
 		//Verif filtre Asian Wood
 		Thread.sleep(3000);
+		Thread.sleep(3000);
 		pagetable.ClickFiltreAsianWood();
 		//Verif filtre default
 		Thread.sleep(3000);
