@@ -41,6 +41,14 @@ public class TestObjectTable {
 		//Verif des 4 éléments
 		PageTable pagetable = new PageTable(driver);
 		pagetable.CheckProductsPrices();
+		//Verif filtre default
+		pagetable.ClickFiltreDefault();
+		pagetable.CheckProductsPricesDefault();
+		//Verif filtre Asian Wood
+		pagetable.ClickFiltreAsianWood();
+		//Verif filtre default
+		pagetable.ClickFiltreRoots();
+		
 		driver.close();
 }
 }
