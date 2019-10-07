@@ -42,9 +42,6 @@ public class TestObjectTable {
 		PageTable pagetable = new PageTable(driver);
 		pagetable.CheckProductsPrices();
 		driver.close();
-		
-	
-		
 }
 }
 
