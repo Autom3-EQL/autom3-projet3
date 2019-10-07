@@ -13,7 +13,7 @@ import shopizer.tools.Outils;
 import shopizer.tools.PageAccueil;
 import shopizer.tools.PageTable;
 
-public class TestObjectTable {
+public class TestObjectAccueil {
 
 		WebDriver driver;
 		String b = "firefox";
@@ -33,26 +33,10 @@ public class TestObjectTable {
 		@Test
 		public void test() throws FileNotFoundException, InterruptedException {
 		PageAccueil pageAccueil = PageFactory.initElements(driver, PageAccueil.class);
-		pageAccueil.goPageTable(driver);
-		PageTable pageTable = PageFactory.initElements(driver, PageTable.class);
-		//Verif du fil d'arianne
-		driver.findElements(By.xpath("//ol[@class='breadcrumb']"));
-		
-		//Verif des 4 éléments
-		PageTable pagetable = new PageTable(driver);
-		pagetable.CheckProductsPrices();
-		//Verif filtre default
-		Thread.sleep(3000);
-		pagetable.ClickFiltreDefault();
-		pagetable.CheckProductsPricesDefault();
-		//Verif filtre Asian Wood
-		Thread.sleep(3000);
-		pagetable.ClickFiltreAsianWood();
-		//Verif filtre default
-		Thread.sleep(3000);
-		pagetable.ClickFiltreRoots();
+		pageAccueil.CheckProductsPricesAccueil();
 		
 		driver.close();
+		
 }
 }
 
