@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import shopizer.tools.Outils;
 import shopizer.tools.PageBedroom;
 
-public class AddElementPanier {
+public class AddElementPanierTest {
 
 	WebDriver driver;
 	String b = "firefox";
