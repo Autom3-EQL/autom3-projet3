@@ -11,13 +11,13 @@ import org.openqa.selenium.support.FindBy;
 
 public class PageTable extends GenericPage {
 
-	@FindBy(xpath="//a[@href='javascript:filterCategory('BRAND','1')']")
+	@FindBy(xpath="(//ul[@class=\"nav nav-list\"]/li/a)[1]")
 	private static WebElement bouton_default;
 	
-	@FindBy(xpath="//a[@href='javascript:filterCategory('BRAND','50')']")
+	@FindBy(xpath="(//ul[@class=\"nav nav-list\"]/li/a)[2]")
 	private static WebElement bouton_asian_wood;
 	
-	@FindBy(xpath="//a[@href='javascript:filterCategory('BRAND','100')']")
+	@FindBy(xpath="(//ul[@class=\"nav nav-list\"]/li/a)[3]")
 	private static WebElement bouton_roots;
 	
 	public PageTable(WebDriver driver) {
@@ -38,17 +38,33 @@ public class PageTable extends GenericPage {
 	
 	public void CheckProductsPricesDefault() throws FileNotFoundException {
 		List<String> Liste4 = Outils.loadFile("src/main/resources/FichiersProduits/ObjetsTableDefault.txt");
-		List<WebElement> Liste5 = driver.findElements(By.xpath("//div[@id='productsContainer']//h3 | //div[@id='productsContainer']//span"));
+		List<WebElement> Liste5 = driver.findElements(By.xpath("//div[@id='productsContainer']//h3"));
 		List<String> Liste6 = new ArrayList<String>();
 		Liste5.stream().map(WebElement::getText).forEach(Liste6::add);
-		assertEquals(Liste4, Liste5);
+		assertEquals(Liste4, Liste6);
 	}
 		
 	public void ClickFiltreAsianWood()  {
 		bouton_asian_wood.click();
 	}
 	
+	public void CheckProductsPricesAsianWood() throws FileNotFoundException {
+		List<String> Liste7 = Outils.loadFile("src/main/resources/FichiersProduits/ObjetsTableDefault.txt");
+		List<WebElement> Liste8 = driver.findElements(By.xpath("//div[@id='productsContainer']//h3"));
+		List<String> Liste9 = new ArrayList<String>();
+		Liste8.stream().map(WebElement::getText).forEach(Liste9::add);
+		assertEquals(Liste7, Liste9);
+		
+	}
 	public void ClickFiltreRoots()  {
 		bouton_roots.click();
+	}
+	
+	public void CheckProductsPricesRoot() throws FileNotFoundException {
+		List<String> Liste10 = Outils.loadFile("src/main/resources/FichiersProduits/ObjetsTableDefault.txt");
+		List<WebElement> Liste11 = driver.findElements(By.xpath("//div[@id='productsContainer']//h3"));
+		List<String> Liste12 = new ArrayList<String>();
+		Liste11.stream().map(WebElement::getText).forEach(Liste12::add);
+		assertEquals(Liste10, Liste12);
 	}
 }
