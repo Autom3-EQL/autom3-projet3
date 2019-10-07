@@ -21,7 +21,13 @@ public class GenericPage {
 	WebElement bouton_table;
 	
 	@FindBy(xpath="//div[@class='mainmenu hidden-xs']//li[@class]//a[@href='/shopizer/shop/category/bedroom.html/ref=c:50']")
-	WebElement bouton_bedroom;
+	public WebElement bouton_bedroom;
+	
+	@FindBy(xpath="//div[@class='mainmenu hidden-xs']//li[@class]//a[@href='/shopizer/shop/category/night-tables.html/ref=c:100']")
+	public WebElement night_tables;
+	
+	@FindBy(xpath="//div[@class='mainmenu hidden-xs']//li[@class]//a[@href='/shopizer/shop/category/bedroom.html/ref=c:50,50']")
+	public WebElement bouton_bedroom_hover;
 	
 	public PageTable goPageTable(WebDriver driver) {
 		bouton_table.click();
@@ -29,8 +35,10 @@ public class GenericPage {
 	}
 	
 	public PageBedroom goPageBedroom(WebDriver driver) {
-		bouton_table.click();
+		bouton_bedroom.click();
 		return PageFactory.initElements(driver, PageBedroom.class);
 	}
+	
+	
 
 }
