@@ -33,4 +33,5 @@ public class GenericPage {
 		return PageFactory.initElements(driver, PageBedroom.class);
 	}
 
+	
 }
