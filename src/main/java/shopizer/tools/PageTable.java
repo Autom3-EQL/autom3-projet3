@@ -25,11 +25,12 @@ public class PageTable extends GenericPage {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void CheckProductsPrices() throws FileNotFoundException {
+	public void CheckProductsPrices() throws FileNotFoundException, InterruptedException {
 		List<String> Liste1 = Outils.loadFile("src/main/resources/FichiersProduits/ObjetsTable.txt");
 		List<WebElement> Liste2 = driver.findElements(By.xpath("//div[@id='productsContainer']//h3 | //div[@id='productsContainer']//span"));
 		List<String> Liste3 = new ArrayList<String>();
 		Liste2.stream().map(WebElement::getText).forEach(Liste3::add);
+		Thread.sleep(3000);
 		assertEquals(Liste1, Liste3);
 	}
 	public void ClickFiltreDefault()  {
