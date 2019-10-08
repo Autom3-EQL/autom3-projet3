@@ -55,6 +55,7 @@ public class TestObjectTable {
 		//Verif filtre default
 		Thread.sleep(3000);
 		pagetable.ClickFiltreRoots();
+		pagetable.CheckProductsPricesRoot();
 		
 		}
 		@After

@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
+
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,19 +32,26 @@ public class PageTable extends GenericPage {
 		List<WebElement> Liste2 = driver.findElements(By.xpath("//div[@id='productsContainer']//h3 | //div[@id='productsContainer']//span"));
 		List<String> Liste3 = new ArrayList<String>();
 		Liste2.stream().map(WebElement::getText).forEach(Liste3::add);
-		Thread.sleep(3000);
-		assertEquals(Liste1, Liste3);
+		Thread.sleep(5000);
+		//assertEquals(Liste1, Liste3);
+		Assert.assertEquals(Liste1, Liste3);
 	}
 	public void ClickFiltreDefault()  {
 		bouton_default.click();
 	}
 	
-	public void CheckProductsPricesDefault() throws FileNotFoundException {
+	public void CheckProductsPricesDefault() throws FileNotFoundException, InterruptedException {
+		Thread.sleep(3000);
 		List<String> Liste4 = Outils.loadFile("src/main/resources/FichiersProduits/ObjetsTableDefault.txt");
+		Thread.sleep(3000);
 		List<WebElement> Liste5 = driver.findElements(By.xpath("//div[@id='productsContainer']//h3"));
+		Thread.sleep(3000);
 		List<String> Liste6 = new ArrayList<String>();
+		Thread.sleep(3000);
 		Liste5.stream().map(WebElement::getText).forEach(Liste6::add);
+		Thread.sleep(3000);
 		assertEquals(Liste4, Liste6);
+		//Assert.assertEquals(Liste4, Liste6);
 	}
 		
 	public void ClickFiltreAsianWood()  {
@@ -57,12 +66,13 @@ public class PageTable extends GenericPage {
 		assertEquals(Liste7, Liste9);
 		
 	}
-	public void ClickFiltreRoots()  {
+	public void ClickFiltreRoots() throws InterruptedException  {
 		bouton_roots.click();
+		Thread.sleep(3000);
 	}
 	
 	public void CheckProductsPricesRoot() throws FileNotFoundException {
-		List<String> Liste10 = Outils.loadFile("src/main/resources/FichiersProduits/ObjetsTableDefault.txt");
+		List<String> Liste10 = Outils.loadFile("src/main/resources/FichiersProduits/ObjetsTableRoots.txt");
 		List<WebElement> Liste11 = driver.findElements(By.xpath("//div[@id='productsContainer']//h3"));
 		List<String> Liste12 = new ArrayList<String>();
 		Liste11.stream().map(WebElement::getText).forEach(Liste12::add);
