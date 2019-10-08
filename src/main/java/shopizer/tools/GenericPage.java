@@ -44,12 +44,14 @@ public class GenericPage {
 	
 	
 	
-	public PageTable goPageTable(WebDriver driver) {
+	public PageTable goPageTable(WebDriver driver) throws InterruptedException {
+		Thread.sleep(3000);
 		bouton_table.click();
 		return PageFactory.initElements(driver, PageTable.class);
 	}
 	
-	public PageBedroom goPageBedroom(WebDriver driver) {
+	public PageBedroom goPageBedroom(WebDriver driver) throws InterruptedException {
+		Thread.sleep(3000);
 		bouton_bedroom.click();
 		return PageFactory.initElements(driver, PageBedroom.class);
 	}

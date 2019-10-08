@@ -31,7 +31,6 @@ public class TestObjectAccueil {
 			//driver= Outils.choisirNavigateur(BROWSER);
 			driver.manage().window().maximize();
 			driver.get(url);
-			driver.findElements(By.xpath("//img[@src='https://s3.ca-central-1.amazonaws.com/shopizer-lightsail/files/DEFAULT/banner.jpg']"));
 		}
 		
 	
