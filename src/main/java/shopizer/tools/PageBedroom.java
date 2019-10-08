@@ -32,7 +32,6 @@ public class PageBedroom extends GenericPage {
 	public PageBedroom addAntiqueRecycleWoodStorage(WebDriver driver) throws InterruptedException {
 		Thread.sleep(2000);
 		antique_recycle_wood_storage.click();
-		Thread.sleep(1000);
 		return PageFactory.initElements(driver, PageBedroom.class);
 	}
 	

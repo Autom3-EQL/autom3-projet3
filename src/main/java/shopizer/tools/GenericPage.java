@@ -53,9 +53,9 @@ public class GenericPage {
 	public ShoppingCartPage paiement(WebDriver driver) throws InterruptedException {
 		Actions hover = new Actions(driver);
 		hover.moveToElement(panier_d_achat).build().perform();
-		WebDriverWait wait = new WebDriverWait(driver, 10);
+		WebDriverWait wait = new WebDriverWait(driver, 20);
 		WebElement bouton_paiement1 = wait.until(ExpectedConditions.elementToBeClickable(bouton_paiement));
-		
+		Thread.sleep(2000);
 		bouton_paiement1.click();
 		Thread.sleep(1000);
 		return PageFactory.initElements(driver, ShoppingCartPage.class);
