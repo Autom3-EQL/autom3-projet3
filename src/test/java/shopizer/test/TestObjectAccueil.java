@@ -31,6 +31,7 @@ public class TestObjectAccueil {
 		}
 		
 		@Test
+		
 		public void test() throws FileNotFoundException, InterruptedException {
 		PageAccueil pageAccueil = PageFactory.initElements(driver, PageAccueil.class);
 		pageAccueil.CheckProductsPricesAccueil();

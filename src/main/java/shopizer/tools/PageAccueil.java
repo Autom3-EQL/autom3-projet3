@@ -25,8 +25,14 @@ public PageAccueil(WebDriver driver) {
 		WebElement image_accueil;
         public void CheckImagePageAccueil() {
     	  
-    	  Assert.assertEquals(true, image_accueil.isDisplayed());
-    		
-    	 
-      }
+    	  Assert.assertEquals(true, image_accueil.isDisplayed()); 
+    	  }
+
+		public void CheckProductsPricesAccueil() throws FileNotFoundException {
+			List<String> Liste1 = Outils.loadFile("src/main/resources/FichiersProduits/ObjetsPagePrincipale.txt");
+			List<WebElement> Liste2 = driver.findElements(By.xpath("//div[@class='product-content text-center']//h3 | //div[@class='product-content text-center']//span"));
+			List<String> Liste3 = new ArrayList<String>();
+			Liste2.stream().map(WebElement::getText).forEach(Liste3::add);
+			assertEquals(Liste1, Liste3);
+		}
 }
