@@ -1,5 +1,6 @@
 package shopizer.tools;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -38,6 +39,10 @@ public class GenericPage {
 	@FindBy(xpath="//a[@onclick='viewShoppingCartPage();']")
 	WebElement bouton_paiement;
 	
+	@FindBy(xpath="//span[@class='lnr lnr-cart']/following-sibling::*/strong")
+	WebElement nombre_article_panier;
+	
+	
 	
 	public PageTable goPageTable(WebDriver driver) {
 		bouton_table.click();
@@ -59,6 +64,12 @@ public class GenericPage {
 		bouton_paiement1.click();
 		Thread.sleep(1000);
 		return PageFactory.initElements(driver, ShoppingCartPage.class);
+	}
+	
+	public void checkNombreArticlePanier(String nombreArticle) throws InterruptedException {
+		Thread.sleep(1000);
+		System.out.println("Nombre panier : "+ nombre_article_panier.getText());
+		Assert.assertTrue("Total article",nombre_article_panier.getText().equals(nombreArticle));
 	}
 
 	

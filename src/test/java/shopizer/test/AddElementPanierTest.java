@@ -44,12 +44,21 @@ public class AddElementPanierTest {
 		PageBedroom pagebedroom = pageAccueil.goPageBedroom(driver);
 		pagebedroom.addCompactNightTable(driver);
 		pagebedroom.addAntiqueRecycleWoodStorage(driver);
+		pagebedroom.checkNombreArticlePanier("(2)");
 		System.out.println("Etape 4 ---------------------------------------------------");
 		
 		ShoppingCartPage shoppingcartpage = pagebedroom.paiement(driver);
-		Thread.sleep(4000);
+		shoppingcartpage.checkRevoirVotreCommande();
+		Thread.sleep(3000);
+		
 		System.out.println("Etape 5 ---------------------------------------------------");
-	
+		shoppingcartpage.changePriceCompact("2");
+		shoppingcartpage.changePriceAntique("2");
+		
+		System.out.println("Etape 6 ---------------------------------------------------");
+		shoppingcartpage.checkTotalPrice("US$1,329.98");
+		shoppingcartpage.recalculer();
+		shoppingcartpage.checkTotalPrice("US$2,659.96");
 	//	PageBedroom bedroom = pageAccueil.goPageBedroom(driver);
 		//PageBedroom bedroom = new PageBedroom(driver);
 	//	Thread.sleep(3000);
