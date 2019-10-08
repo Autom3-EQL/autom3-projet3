@@ -47,7 +47,7 @@ public class AddElementPanierTest {
 		System.out.println("Etape 4 ---------------------------------------------------");
 		
 		ShoppingCartPage shoppingcartpage = pagebedroom.paiement(driver);
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		System.out.println("Etape 5 ---------------------------------------------------");
 	
 	//	PageBedroom bedroom = pageAccueil.goPageBedroom(driver);

@@ -2,9 +2,12 @@ package shopizer.tools;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GenericPage {
 
@@ -29,6 +32,13 @@ public class GenericPage {
 	@FindBy(xpath="//div[@class='mainmenu hidden-xs']//li[@class]//a[@href='/shopizer/shop/category/bedroom.html/ref=c:50,50']")
 	public WebElement bouton_bedroom_hover;
 	
+	@FindBy(xpath="//span[@class='lnr lnr-cart']/..")
+	WebElement panier_d_achat;
+	
+	@FindBy(xpath="//a[@onclick='viewShoppingCartPage();']")
+	WebElement bouton_paiement;
+	
+	
 	public PageTable goPageTable(WebDriver driver) {
 		bouton_table.click();
 		return PageFactory.initElements(driver, PageTable.class);
@@ -40,6 +50,16 @@ public class GenericPage {
 	}
 	
 	
+	public ShoppingCartPage paiement(WebDriver driver) throws InterruptedException {
+		Actions hover = new Actions(driver);
+		hover.moveToElement(panier_d_achat).build().perform();
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		WebElement bouton_paiement1 = wait.until(ExpectedConditions.elementToBeClickable(bouton_paiement));
+		
+		bouton_paiement1.click();
+		Thread.sleep(1000);
+		return PageFactory.initElements(driver, ShoppingCartPage.class);
+	}
 
 	
 }
