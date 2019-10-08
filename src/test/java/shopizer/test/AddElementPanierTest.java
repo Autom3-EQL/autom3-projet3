@@ -14,14 +14,13 @@ import shopizer.tools.PageBedroom;
 public class AddElementPanierTest {
 
 	WebDriver driver;
-	String b = "firefox";
-	//private String BROWSER=System.getProperty("browser");
+	String BROWSER = System.getProperty("browser");
 	String url= "http://192.168.102.185:8091/shopizer/shop";
 	
 	@Before
 	public void setUp() {
 		System.out.println("\n@Before");
-		driver= Outils.choisirNavigateur(b);
+		driver = Outils.choisirNavigateur("firefox");
 		//driver= Outils.choisirNavigateur(BROWSER);
 		driver.manage().window().maximize();
 		driver.get(url);
@@ -41,9 +40,6 @@ public class AddElementPanierTest {
 		Actions hover = new Actions(driver);
 	
 		hover.moveToElement(pageAccueil.bouton_bedroom).build().perform();
-		hover.build();
-		hover.click();
-    	hover.perform();
 		
 	
 		

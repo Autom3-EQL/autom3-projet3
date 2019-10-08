@@ -17,6 +17,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.Select;
 
 public class Outils {
+	static WebDriver driver;
 
 	public static void renseignerChamp(WebElement we, String s) {
 		we.clear();
@@ -39,22 +40,25 @@ public class Outils {
 		switch (browser) {
 		case "firefox":
 			System.setProperty("webdriver.gecko.driver", "src/main/resources/driver/geckodriver.exe");
-			return new FirefoxDriver();
-			
+			driver = new FirefoxDriver();
+			break;
 		case "ie":
 			System.setProperty("webdriver.ie.driver", "src/main/resources/driver/IEDriverServer.exe");
-			return new InternetExplorerDriver();
-			
+			driver = new InternetExplorerDriver();
+			break;
 
 		case "chrome":
 			System.setProperty("webdriver.chrome.driver", "src/main/resources/driver/chromedriver.exe");
-			return new ChromeDriver();
-			
+			driver = new ChromeDriver();
+			break;
 
 		default:
+			System.setProperty("webdriver.gecko.driver", "src/main/resources/driver/geckodriver.exe");
+			driver = new FirefoxDriver();
 			System.out.println("browser mal renseigné");
-			return null;
+			break;
 		}
+		return driver;
 	}
 	
 	
@@ -75,5 +79,7 @@ public class Outils {
 	   
 	    return list;
 	}
+	
+
 	
 }

@@ -1,4 +1,5 @@
 package shopizer.test;
+import shopizer.tools.Outils;
 
 import java.io.FileNotFoundException;
 
@@ -15,30 +16,40 @@ import shopizer.tools.PageTable;
 
 public class TestObjectAccueil {
 
-		WebDriver driver;
-		String b = "firefox";
+		
+		//String b = "firefox";
 		//private String BROWSER=System.getProperty("browser");
+		WebDriver driver;
+		String BROWSER = System.getProperty("browser");
 		String url= "http://192.168.102.185:8091/shopizer/shop";
 		
 		@Before
 		public void setUp() {
 			System.out.println("\n@Before");
-			driver= Outils.choisirNavigateur(b);
+			driver = Outils.choisirNavigateur("firefox");
+			//driver= Outils.choisirNavigateur(b);
 			//driver= Outils.choisirNavigateur(BROWSER);
 			driver.manage().window().maximize();
 			driver.get(url);
 			driver.findElements(By.xpath("//img[@src='https://s3.ca-central-1.amazonaws.com/shopizer-lightsail/files/DEFAULT/banner.jpg']"));
 		}
 		
+	
+
 		@Test
 		
 		public void test() throws FileNotFoundException, InterruptedException {
 		PageAccueil pageAccueil = PageFactory.initElements(driver, PageAccueil.class);
+		pageAccueil.CheckImagePageAccueil();
 		pageAccueil.CheckProductsPricesAccueil();
 		
-		driver.close();
-		
 }
+		
+		@After
+		public void tearDown(){
+			System.out.println("\n@After");
+			driver.close();
+		}
 }
 
 
