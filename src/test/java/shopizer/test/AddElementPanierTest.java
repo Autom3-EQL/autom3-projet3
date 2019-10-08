@@ -1,5 +1,6 @@
 package shopizer.test;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -10,6 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import shopizer.tools.Outils;
 import shopizer.tools.PageAccueil;
 import shopizer.tools.PageBedroom;
+import shopizer.tools.ShoppingCartPage;
 
 public class AddElementPanierTest {
 
@@ -20,12 +22,10 @@ public class AddElementPanierTest {
 	@Before
 	public void setUp() {
 		System.out.println("\n@Before");
-		driver = Outils.choisirNavigateur("firefox");
+		driver = Outils.choisirNavigateur("chrome");
 		//driver= Outils.choisirNavigateur(BROWSER);
 		driver.manage().window().maximize();
 		driver.get(url);
-		
-		
 	}
 	
 	
@@ -38,19 +38,29 @@ public class AddElementPanierTest {
 		
 		System.out.println("Etape 2 ---------------------------------------------------");
 		Actions hover = new Actions(driver);
-	
 		hover.moveToElement(pageAccueil.bouton_bedroom).build().perform();
-		
-	
-		
+
 		System.out.println("Etape 3 ---------------------------------------------------");
+		PageBedroom pagebedroom = pageAccueil.goPageBedroom(driver);
+		pagebedroom.addCompactNightTable(driver);
+		pagebedroom.addAntiqueRecycleWoodStorage(driver);
 		System.out.println("Etape 4 ---------------------------------------------------");
+		
+		ShoppingCartPage shoppingcartpage = pagebedroom.paiement(driver);
+		Thread.sleep(2000);
 		System.out.println("Etape 5 ---------------------------------------------------");
 	
 	//	PageBedroom bedroom = pageAccueil.goPageBedroom(driver);
 		//PageBedroom bedroom = new PageBedroom(driver);
 	//	Thread.sleep(3000);
 		//bedroom.goPageBedroom(driver);
+	}
+	
+	
+	
+	@After
+	public void tearDown(){
+		System.out.println("\n@After");
 		driver.close();
 	}
 }
