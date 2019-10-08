@@ -58,9 +58,9 @@ public class ShoppingCartPage extends GenericPage {
 	}
 	
 	public void checkRevoirVotreCommande() throws InterruptedException {
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		Assert.assertTrue("Label : revoir votre commande - text", label_revoir_votre_commande.getText().equals("Revoir votre commande"));
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		Assert.assertTrue("Label : revoir votre commande - affichage",label_revoir_votre_commande.isDisplayed());
 	}
 }
